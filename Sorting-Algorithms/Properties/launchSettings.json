@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Sorting-Algorithms": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
