@@ -20,6 +20,7 @@ namespace Sorting_Algorithms
         public void MainMenu()
         {
             BubbleSort bubbleSort = new BubbleSort();
+            InsertionSort insertionSort = new InsertionSort();
 
             string prompt = " ";
 
@@ -33,6 +34,7 @@ namespace Sorting_Algorithms
                     bubbleSort.BubbleSortMain();
                     break;
                 case 1:
+                    insertionSort.InsertionMain();
                     break;
                 case 2:
                     break;

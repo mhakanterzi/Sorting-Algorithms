@@ -34,18 +34,6 @@ namespace Sorting_Algorithms.Algorithms
             }
         }
 
-        public int[] RandomArray(int size, int Min = 0, int Max = 100)
-        {
-
-            int[] randomArray = new int[size];
-            Random random = new Random();
-            for (int i = 0; i< size; i++)
-            {
-                randomArray[i] = random.Next(Min, Max +1); //generatin random value between Min and Max values
-            }
-            return randomArray;
-        }
-
         public void PrintArray(int[] arr, int size)
         {
             int i;
@@ -59,7 +47,9 @@ namespace Sorting_Algorithms.Algorithms
         {
             Console.Clear();
 
-            int[] array = RandomArray(10);
+            Assistants randomArray = new Assistants();
+
+            int[] array = randomArray.RandomArray(10);
             int n = array.Length;
             Console.WriteLine("Random Array");
             PrintArray(array, n);

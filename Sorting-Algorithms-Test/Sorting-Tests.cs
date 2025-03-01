@@ -9,6 +9,7 @@ namespace Sorting_Algorithms.Tests
     public class BubbleSortTests
     {
         private readonly BubbleSort _bubbleSort = new BubbleSort();
+        private readonly Assistants _assistants = new Assistants();
 
         [Fact]
         public void Sorting_SortsArrayCorrectly()
@@ -43,7 +44,7 @@ namespace Sorting_Algorithms.Tests
         {
             int size = 5000;
             // Arrange
-            int[] arr = _bubbleSort.RandomArray(size);
+            int[] arr = _assistants.RandomArray(size);
             var stopwatch = Stopwatch.StartNew();
 
             // Act
@@ -62,7 +63,7 @@ namespace Sorting_Algorithms.Tests
         {
             int size = 10000;
             // Arrange
-            int[] arr = _bubbleSort.RandomArray(size);
+            int[] arr = _assistants.RandomArray(size);
             var stopwatch = Stopwatch.StartNew();
 
             // Act
@@ -75,5 +76,64 @@ namespace Sorting_Algorithms.Tests
 
             Assert.True(elapsedMs < size * size * 0.05);
         }
+    }
+
+    public class InsertionSortTest
+    {
+        private readonly Assistants _assistants = new Assistants();
+        private readonly InsertionSort _insertionSort = new InsertionSort();
+
+        [Fact]
+        public void Sorting_BestCasePerformance()
+        {
+            int[] arr = { 1, 2, 3, 4, 5 };
+
+            var stopwatch = Stopwatch.StartNew();
+            _insertionSort.Sorting(arr);
+            stopwatch.Stop();
+
+            long elapsedMs = stopwatch.ElapsedMilliseconds;
+
+            Assert.True(elapsedMs < 1);
+        }
+
+        [Fact]
+        public void SortPerformanceAverageCase()
+        {
+            int size = 5000;
+            // Arrange
+            int[] arr = _assistants.RandomArray(size);
+            var stopwatch = Stopwatch.StartNew();
+
+            // Act
+            _insertionSort.Sorting(arr);
+
+            // Stop timer
+            stopwatch.Stop();
+            long elapsedMs = stopwatch.ElapsedMilliseconds;
+
+
+            Assert.True(elapsedMs < size * size * 0.05);
+        }
+
+        [Fact]
+        public void SortPerformanceWorstCase()
+        {
+            int size = 10000;
+            // Arrange
+            int[] arr = _assistants.RandomArray(size);
+            var stopwatch = Stopwatch.StartNew();
+
+            // Act
+            _insertionSort.Sorting(arr);
+
+            // Stop timer
+            stopwatch.Stop();
+            long elapsedMs = stopwatch.ElapsedMilliseconds;
+
+
+            Assert.True(elapsedMs < size * size * 0.05);
+        }
+
     }
 }
