@@ -3,6 +3,7 @@ using Xunit;
 using Sorting_Algorithms.Algorithms;
 using System.Diagnostics;
 using System.Drawing;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Sorting_Algorithms.Tests
 {
@@ -133,6 +134,66 @@ namespace Sorting_Algorithms.Tests
 
 
             Assert.True(elapsedMs < size * size * 0.05);
+        }
+
+    }
+
+    public class MergeSortTest
+    {
+        private readonly Assistants _assistants = new Assistants();
+        private readonly MergeSort _mergeSort = new MergeSort();
+
+        [Fact]
+        public void Sorting_BestCasePerformance()
+        {
+            int[] arr = { 1, 2, 3, 4, 5 };
+            int size = arr.Length;
+
+            var stopwatch = Stopwatch.StartNew();
+            _mergeSort.Sorting(arr, 0, arr.Length - 1);
+            stopwatch.Stop();
+
+            long elapsedMs = stopwatch.ElapsedMilliseconds;
+
+            Assert.True(elapsedMs < size * Math.Log2(size) * 0.05);
+        }
+
+        [Fact]
+        public void SortPerformanceAverageCase()
+        {
+            int size = 5000;
+            // Arrange
+            int[] arr = _assistants.RandomArray(size);
+            var stopwatch = Stopwatch.StartNew();
+
+            // Act
+            _mergeSort.Sorting(arr, 0, arr.Length - 1);
+
+            // Stop timer
+            stopwatch.Stop();
+            long elapsedMs = stopwatch.ElapsedMilliseconds;
+
+
+            Assert.True(elapsedMs < size * Math.Log2(size) * 0.05);
+        }
+
+        [Fact]
+        public void SortPerformanceWorstCase()
+        {
+            int size = 10000;
+            // Arrange
+            int[] arr = _assistants.RandomArray(size);
+            var stopwatch = Stopwatch.StartNew();
+
+            // Act
+            _mergeSort.Sorting(arr, 0, arr.Length - 1);
+
+            // Stop timer
+            stopwatch.Stop();
+            long elapsedMs = stopwatch.ElapsedMilliseconds;
+
+
+            Assert.True(elapsedMs < size * Math.Log2(size) * 0.05);
         }
 
     }

@@ -26,16 +26,6 @@ namespace Sorting_Algorithms.Algorithms
             }
         }
 
-        public void PrintArray(int[] array)
-        {
-            int n = array.Length;
-            for (int i = 0;i < n; i++)
-            {
-                Console.Write(array[i] + " ");
-            }
-            Console.WriteLine();
-        }
-
 
         public void InsertionMain()
         {
@@ -45,11 +35,11 @@ namespace Sorting_Algorithms.Algorithms
 
             int[] array = assistants.RandomArray(10);
             Console.WriteLine("There is a Random array");
-            PrintArray(array);
+            assistants.PrintArray(array);
 
             Sorting(array);
             Console.WriteLine("There is a Sorted array");
-            PrintArray(array);
+            assistants.PrintArray(array);
 
 
             Console.ReadKey();

@@ -21,5 +21,15 @@ namespace Sorting_Algorithms
             return randomArray;
         }
 
+        public void PrintArray(int[] array)
+        {
+            int n = array.Length;
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write(array[i] + " ");
+            }
+            Console.WriteLine();
+        }
+
     }
 }
