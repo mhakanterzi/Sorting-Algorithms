@@ -23,6 +23,7 @@ namespace Sorting_Algorithms
             InsertionSort insertionSort = new InsertionSort();
             MergeSort mergeSort = new MergeSort();
             QuickSort quickSort = new QuickSort();
+            BucketSort bucketSort = new BucketSort();
 
             string prompt = " ";
 
@@ -45,6 +46,7 @@ namespace Sorting_Algorithms
                     quickSort.QuickMain();
                     break;
                 case 4:
+                    bucketSort.BucketMain();
                     break;
                 case 5:
                     Console.Write("\nÇıkmak için herhangi bir tuşa basınız... ");

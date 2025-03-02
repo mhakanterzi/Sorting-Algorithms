@@ -241,9 +241,56 @@ namespace Sorting_Algorithms.Tests
 
             Assert.True(elapsedMs < size * size * 0.05);
 
+        } 
+    }
+
+    public class BucketSortTests
+    {
+        private readonly BucketSort _bucketSort = new BucketSort();
+        private readonly Assistants _assistants = new Assistants();
+
+        [Fact]
+        public void Sorting_BestCasePerformance()
+        {
+            float[] arr = { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f };
+
+            var stopwatch = Stopwatch.StartNew();
+            _bucketSort.Sorting(arr);
+            stopwatch.Stop();
+
+            long elapsedMs = stopwatch.ElapsedMilliseconds;
+
+            Assert.True(elapsedMs < 1); 
         }
 
+        [Fact]
+        public void SortPerformance_AverageCase()
+        {
+            int size = 5000;
+            float[] arr = _assistants.RandomFloatArray(size);
+            var stopwatch = Stopwatch.StartNew();
 
+            _bucketSort.Sorting(arr);
 
+            stopwatch.Stop();
+            long elapsedMs = stopwatch.ElapsedMilliseconds;
+
+            Assert.True(elapsedMs < size * Math.Log2(size) * 0.05);
+        }
+
+        [Fact]
+        public void SortPerformance_WorstCase()
+        {
+            int size = 100000;
+            float[] arr = _assistants.RandomFloatArray(size);
+            var stopwatch = Stopwatch.StartNew();
+
+            _bucketSort.Sorting(arr);
+
+            stopwatch.Stop();
+            long elapsedMs = stopwatch.ElapsedMilliseconds;
+
+            Assert.True(elapsedMs < size * size * 0.05);
+        }
     }
 }
