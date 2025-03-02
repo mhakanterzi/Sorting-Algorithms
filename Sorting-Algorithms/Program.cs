@@ -22,6 +22,7 @@ namespace Sorting_Algorithms
             BubbleSort bubbleSort = new BubbleSort();
             InsertionSort insertionSort = new InsertionSort();
             MergeSort mergeSort = new MergeSort();
+            QuickSort quickSort = new QuickSort();
 
             string prompt = " ";
 
@@ -41,6 +42,7 @@ namespace Sorting_Algorithms
                     mergeSort.MergeMain();
                     break;
                 case 3:
+                    quickSort.QuickMain();
                     break;
                 case 4:
                     break;

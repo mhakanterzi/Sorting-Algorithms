@@ -102,14 +102,11 @@ namespace Sorting_Algorithms.Tests
         public void SortPerformanceAverageCase()
         {
             int size = 5000;
-            // Arrange
             int[] arr = _assistants.RandomArray(size);
             var stopwatch = Stopwatch.StartNew();
 
-            // Act
             _insertionSort.Sorting(arr);
 
-            // Stop timer
             stopwatch.Stop();
             long elapsedMs = stopwatch.ElapsedMilliseconds;
 
@@ -121,14 +118,11 @@ namespace Sorting_Algorithms.Tests
         public void SortPerformanceWorstCase()
         {
             int size = 10000;
-            // Arrange
             int[] arr = _assistants.RandomArray(size);
             var stopwatch = Stopwatch.StartNew();
 
-            // Act
             _insertionSort.Sorting(arr);
 
-            // Stop timer
             stopwatch.Stop();
             long elapsedMs = stopwatch.ElapsedMilliseconds;
 
@@ -162,14 +156,11 @@ namespace Sorting_Algorithms.Tests
         public void SortPerformanceAverageCase()
         {
             int size = 5000;
-            // Arrange
             int[] arr = _assistants.RandomArray(size);
             var stopwatch = Stopwatch.StartNew();
 
-            // Act
             _mergeSort.Sorting(arr, 0, arr.Length - 1);
 
-            // Stop timer
             stopwatch.Stop();
             long elapsedMs = stopwatch.ElapsedMilliseconds;
 
@@ -181,20 +172,78 @@ namespace Sorting_Algorithms.Tests
         public void SortPerformanceWorstCase()
         {
             int size = 10000;
-            // Arrange
             int[] arr = _assistants.RandomArray(size);
             var stopwatch = Stopwatch.StartNew();
 
-            // Act
             _mergeSort.Sorting(arr, 0, arr.Length - 1);
 
-            // Stop timer
             stopwatch.Stop();
             long elapsedMs = stopwatch.ElapsedMilliseconds;
 
 
             Assert.True(elapsedMs < size * Math.Log2(size) * 0.05);
         }
+
+    }
+
+    public class QuickSortTest
+    {
+        private readonly Assistants _assistants = new Assistants();
+        private readonly QuickSort _quickSort = new QuickSort();
+
+        [Fact]
+        public void Sorting_BestCasePerformance()
+        {
+            int[] arr = { 1, 2, 3, 4, 5 };
+            int size = arr.Length;
+
+            var stopwatch = Stopwatch.StartNew();
+            _quickSort.Sorting(arr, 0, arr.Length - 1);
+            stopwatch.Stop();
+
+            long elapsedMs = stopwatch.ElapsedMilliseconds;
+
+            Assert.True(elapsedMs < size * Math.Log2(size) * 0.05);
+        }
+
+        [Fact]
+        public void SortPerformanceAverageCase()
+        {
+            int size = 5000;
+            int[] arr = _assistants.RandomArray(size);
+            var stopwatch = Stopwatch.StartNew();
+
+            _quickSort.Sorting(arr, 0, arr.Length - 1);
+
+            stopwatch.Stop();
+            long elapsedMs = stopwatch.ElapsedMilliseconds;
+
+
+            Assert.True(elapsedMs < size * Math.Log2(size) * 0.05);
+        }
+
+        [Fact]
+        public void SortPerformance_WorstCase()
+        {
+            int size = 5000;
+            int[] arr = new int[size];
+            for (int i = 0; i < size; i++)
+            {
+                arr[i] = i + 1; 
+            }
+
+            var stopwatch = Stopwatch.StartNew();
+
+            _quickSort.Sorting(arr, 0, arr.Length - 1);
+
+            stopwatch.Stop();
+            long elapsedMs = stopwatch.ElapsedMilliseconds;
+
+            Assert.True(elapsedMs < size * size * 0.05);
+
+        }
+
+
 
     }
 }
